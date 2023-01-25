@@ -1,0 +1,68 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+            <div class="card">
+                <div class="card-body">
+                    <h1 class="titulo">
+                         <strong>Registro Personas</strong>
+                    </h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-body">
+                    <div class="titulo"><h4>{{ action }} Usuario</h4></div>
+                    <form [formGroup] = "form" (ngSubmit)="guardarRegistro()">
+                        <div class="input-group input-group-lg mb-3">
+                            <span class="input-group-text"></span>
+                            <input formControlName = "nombres" type="text" class="form-control" placeholder="Nombres" >
+                        </div>
+                        <div class="input-group input-group-lg mb-3">
+                            <span class="input-group-text" ></span>
+                            <input formControlName = "apellidos" type="text" class="form-control" placeholder="Apellidos" >
+                        </div>
+                        <div class="input-group input-group-lg mb-3">
+                            <span class="input-group-text" ></span>
+                            <input formControlName = "edad" type="text" class="form-control" placeholder="Edad" maxlength="3">
+                        </div>
+                        <div class="input-group input-group-lg mb-3">
+                            <span class="input-group-text" ></span>
+                            <input formControlName = "titulo" type="text" class="form-control" placeholder="Titulo" >
+                        </div>
+                        <div class="input-group input-group-lg mb-3">
+                            <span class="input-group-text" ></span>
+                            <input formControlName = "ciudad" type="text" class="form-control" placeholder="Ciudad" >
+                        </div>
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-primary btn-lg" [disabled]="form.invalid" type="submit"> <i class="fa-solid fa-database"></i> &nbsp; Guardar datos</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="titulo">Listado de Usuarios</h4>
+                    <table class="table">
+                        <tbody>
+                            <tr *ngFor="let registro of listRegistros; let i = index">
+                                <td>{{registro.nombres}}</td>
+                                <td>{{registro.apellidos}}</td>
+                                <td>{{registro.edad}}</td>
+                                <td>{{registro.titulo}}</td>
+                                <td>{{registro.ciudad}}</td>
+                                <td><i (click)="editarRegistro(registro)" class="fa-solid fa-user-pen"></i></td>
+                                <td><i (click)="eliminarRegistro(registro.id)" class="fa-solid fa-trash-can text-danger"></i></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
